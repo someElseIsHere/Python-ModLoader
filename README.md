@@ -1,2 +1,1 @@
-# KubePy
-KubeJs but for Python
+# Python ModLoader

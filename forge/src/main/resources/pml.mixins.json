@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "org.theplaceholder.kubepy.forge.mixin",
+  "package": "org.theplaceholder.pml.forge.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [

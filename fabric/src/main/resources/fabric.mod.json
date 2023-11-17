@@ -1,24 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "kubepy",
+  "id": "pml",
   "version": "${version}",
-  "name": "KubePy",
+  "name": "Python Mod Loader",
   "description": "TODO",
   "authors": [
     "thePlaceholder"
   ],
   "contact": {},
   "license": "GPLv3",
-  "icon": "assets/kubepy/icon.png",
+  "icon": "assets/pml/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.kubepy.fabric.KubePyFabric"
+      "org.theplaceholder.pml.fabric.PythonModLoaderFabric"
+    ],
+    "client": [
+      "org.theplaceholder.pml.fabric.client.PythonModLoaderClientFabric"
     ]
   },
   "mixins": [
-    "kubepy.mixins.json",
-    "kubepy-common.mixins.json"
+    "pml.mixins.json",
+    "pml.common.mixins.json"
   ],
   "depends": {
     "fabric": "*",

@@ -4,30 +4,30 @@ loaderVersion = "[47,)"
 license = "GPLv3"
 
 [[mods]]
-modId = "kubepy"
+modId = "pml"
 version = "${version}"
-displayName = "KubePy"
+displayName = "Python Mod Loader"
 authors = "thePlaceholder"
 description = '''
 TODO
 '''
 #logoFile = ""
 
-[[dependencies.kubepy]]
+[[dependencies.pml]]
 modId = "forge"
 mandatory = true
 versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.kubepy]]
+[[dependencies.pml]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.kubepy]]
+[[dependencies.pml]]
 modId = "architectury"
 mandatory = true
 versionRange = "[9.1.12,)"

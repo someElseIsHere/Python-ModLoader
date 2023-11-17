@@ -14,8 +14,8 @@ loom {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
-        mixinConfig "examplemod-common.mixins.json"
-        mixinConfig "examplemod.mixins.json"
+        mixinConfig "pml.common.mixins.json"
+        mixinConfig "pml.mixins.json"
     }
 }
 
@@ -34,6 +34,8 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+
+    modApi 'org.python:jython-standalone:2.7.3'
     shadow 'org.python:jython-standalone:2.7.3'
 }
 
