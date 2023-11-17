@@ -1,27 +1,24 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "kubepy",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "KubePy",
+  "description": "TODO",
   "authors": [
-    "Me!"
+    "thePlaceholder"
   ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-  },
-  "license": "Insert License Here",
-  "icon": "assets/examplemod/icon.png",
+  "contact": {},
+  "license": "GPLv3",
+  "icon": "assets/kubepy/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.examplemod.fabric.ExampleModFabric"
+      "net.kubepy.fabric.KubePyFabric"
     ]
   },
   "mixins": [
-    "examplemod.mixins.json",
-    "examplemod-common.mixins.json"
+    "kubepy.mixins.json",
+    "kubepy-common.mixins.json"
   ],
   "depends": {
     "fabric": "*",

@@ -1,9 +1,10 @@
 {
   "required": true,
-  "package": "net.examplemod.mixin.forge",
+  "package": "org.theplaceholder.kubepy.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
+    "MixinTitleScreen"
   ],
   "mixins": [
   ],
