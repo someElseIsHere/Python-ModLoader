@@ -34,7 +34,7 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
-    shadow 'org.python:jython:2.7.3'
+    shadow 'org.python:jython-standalone:2.7.3'
 }
 
 processResources {
