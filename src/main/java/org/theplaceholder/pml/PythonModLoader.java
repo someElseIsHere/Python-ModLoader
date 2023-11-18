@@ -5,13 +5,14 @@ import com.google.gson.GsonBuilder;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import org.apache.commons.io.FileUtils;
+import org.python.core.PyString;
+import org.python.core.PyStringMap;
 import org.python.util.PythonInterpreter;
 import org.theplaceholder.pml.loader.PyMod;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +73,9 @@ public class PythonModLoader implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        JYTHON.exec("import sys");
+        JYTHON.exec("sys.path.append('" + P_MODS_CACHE_FOLDER.getAbsolutePath() + "')");
+
         registerMods();
         runModsEntryPoints();
     }

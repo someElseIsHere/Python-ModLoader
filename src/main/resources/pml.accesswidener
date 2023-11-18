@@ -1,1 +1,15 @@
 accessWidener v2 named
+
+#---START OF THE BLOCK SECTION---
+accessible field net/minecraft/block/AbstractBlock collidable Z
+accessible field net/minecraft/block/AbstractBlock resistance F
+accessible field net/minecraft/block/AbstractBlock slipperiness F
+accessible field net/minecraft/block/AbstractBlock velocityMultiplier F
+accessible field net/minecraft/block/AbstractBlock jumpVelocityMultiplier F
+
+mutable field net/minecraft/block/AbstractBlock collidable Z
+mutable field net/minecraft/block/AbstractBlock resistance F
+mutable field net/minecraft/block/AbstractBlock slipperiness F
+mutable field net/minecraft/block/AbstractBlock velocityMultiplier F
+mutable field net/minecraft/block/AbstractBlock jumpVelocityMultiplier F
+#---END OF THE BLOCK SECTION---

@@ -2,13 +2,10 @@ package org.theplaceholder.pml.loader;
 
 import com.google.gson.annotations.Expose;
 import org.theplaceholder.pml.PythonModLoader;
-import org.theplaceholder.pml.Utils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.zip.ZipFile;
 
 public class PyMod {
     @Expose

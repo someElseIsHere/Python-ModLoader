@@ -9,6 +9,11 @@ import static org.theplaceholder.pml.PythonModLoader.MODS;
 
 public class PythonModLoaderClient implements ClientModInitializer {
 
+    @Override
+    public void onInitializeClient() {
+        runModsClientEntryPoints();
+    }
+
     public static void runModsClientEntryPoints(){
         for (PyMod mod : MODS) {
             try {
@@ -17,10 +22,5 @@ public class PythonModLoaderClient implements ClientModInitializer {
                 throw new RuntimeException(e);
             }
         }
-    }
-
-    @Override
-    public void onInitializeClient() {
-        runModsClientEntryPoints();
     }
 }

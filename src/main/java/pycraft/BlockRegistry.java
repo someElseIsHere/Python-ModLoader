@@ -1,20 +1,24 @@
 package pycraft;
 
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
-public class BlockRegistry {
-    public String modId;
+public class BlockRegistry extends Registry<net.minecraft.block.Block> {
     public BlockRegistry(String modId){
-        this.modId = modId;
+        super(modId, Registries.BLOCK);
     }
 
-    public void register(String id, Block block) {
-        Registry.register(Registries.BLOCK, new Identifier(modId, id), block);
-    }
-
+    @Override
     public void register(String id) {
         register(id, new Block());
+    }
+
+    public void registerWithItem(String id) {
+        registerWithItem(id, new Block());
+    }
+
+    public void registerWithItem(String id, Block block) {
+        register(id, block);
+        ItemRegistry itemRegistry = new ItemRegistry(modId);
+        itemRegistry.register(id, new BlockItem(block));
     }
 }
