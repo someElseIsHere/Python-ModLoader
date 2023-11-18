@@ -1,52 +1,63 @@
 plugins {
-    id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.3-SNAPSHOT" apply false
+    id 'fabric-loom' version '1.4-SNAPSHOT'
+    id 'maven-publish'
 }
 
-architectury {
-    minecraft = rootProject.minecraft_version
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
 }
 
-subprojects {
-    apply plugin: "dev.architectury.loom"
+repositories {}
 
-    loom {
-        silentMojangMappingsLicense()
-    }
+loom {
+    accessWidenerPath = file("src/main/resources/pml.accesswidener")
+}
 
-    dependencies {
-        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-        mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    modImplementation 'org.python:jython-standalone:2.7.3'
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
     }
 }
 
-allprojects {
-    apply plugin: "java"
-    apply plugin: "architectury-plugin"
-    apply plugin: "maven-publish"
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 17
+}
 
-    base {
-        archivesName = rootProject.archives_base_name
+java {
+    withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.base.archivesName.get()}"}
     }
+}
 
-    version = rootProject.mod_version
-    group = rootProject.maven_group
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 
     repositories {
-        // Add repositories to retrieve artifacts from in here.
-        // You should only use this when depending on other mods because
-        // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-        // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-        // for more information about repositories.
-    }
-
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-        options.release = 17
-    }
-
-    java {
-        withSourcesJar()
     }
 }

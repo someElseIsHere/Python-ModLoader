@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "pml",
+  "version": "${version}",
+  "name": "Python Mod Loader",
+  "description": "A mod loader for Python mods",
+  "authors": [
+    "thePlaceholder"
+  ],
+  "contact": {},
+  "license": "GPLv3",
+  "icon": "assets/pml/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "org.theplaceholder.pml.PythonModLoader"
+    ],
+    "client": [
+      "org.theplaceholder.pml.client.PythonModLoaderClient"
+    ]
+  },
+  "mixins": [
+    "pml.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.22",
+    "minecraft": "~1.20.2",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}

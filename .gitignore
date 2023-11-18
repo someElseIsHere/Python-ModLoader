@@ -1,6 +1,5 @@
 build/
 *.ipr
-run/
 *.iws
 out/
 *.iml
@@ -19,3 +18,6 @@ classes/
 *.launch
 
 .jython_cache
+
+run/*
+!run/python-mods
