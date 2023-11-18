@@ -5,7 +5,6 @@ import org.theplaceholder.pml.loader.PyMod;
 
 import java.io.IOException;
 
-import static org.theplaceholder.pml.PythonModLoader.IS_CLIENT;
 import static org.theplaceholder.pml.PythonModLoader.MODS;
 
 public class PythonModLoaderClient implements ClientModInitializer {
@@ -23,6 +22,5 @@ public class PythonModLoaderClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         runModsClientEntryPoints();
-        IS_CLIENT = true;
     }
 }

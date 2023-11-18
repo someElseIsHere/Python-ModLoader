@@ -2,12 +2,13 @@ package org.theplaceholder.pml.loader;
 
 import com.google.gson.annotations.Expose;
 import org.theplaceholder.pml.PythonModLoader;
+import org.theplaceholder.pml.Utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.zip.ZipFile;
 
 public class PyMod {
     @Expose
@@ -28,25 +29,14 @@ public class PyMod {
     @Expose
     public String[] entryPoints;
 
-    public File modFolder;
+    public File modArchive;
 
     public static PyMod fromJson(String json){
         return PythonModLoader.GSON.fromJson(json, PyMod.class);
     }
 
-    public static PyMod fromFile(File file){
-        try {
-            PyMod mod = fromJson(Files.readString(file.toPath()));
-            mod.modFolder = file.getParentFile();
-            return mod;
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public File getPythonFolder(){
-        return new File(modFolder, "python");
+        return PythonModLoader.P_MODS_CACHE_FOLDER;
     }
 
     public File[] getEntryPoints(){
