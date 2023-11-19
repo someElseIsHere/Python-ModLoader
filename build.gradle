@@ -23,7 +23,8 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation 'org.python:jython-standalone:2.7.3'
+    implementation 'org.python:jython-standalone:2.7.3'
+    include 'org.python:jython-standalone:2.7.3'
 }
 
 processResources {

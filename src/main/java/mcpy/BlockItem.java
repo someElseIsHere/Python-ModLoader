@@ -1,4 +1,4 @@
-package pycraft;
+package mcpy;
 
 public class BlockItem extends net.minecraft.item.BlockItem implements PyItem {
     public BlockItem(Block block) {

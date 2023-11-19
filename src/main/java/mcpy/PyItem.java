@@ -1,3 +1,3 @@
-package pycraft;
+package mcpy;
 
 public interface PyItem {}

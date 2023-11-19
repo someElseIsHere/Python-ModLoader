@@ -1,4 +1,4 @@
-package pycraft;
+package mcpy;
 
 public class Item extends net.minecraft.item.Item implements PyItem{
     public Item() {

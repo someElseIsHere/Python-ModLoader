@@ -1,4 +1,4 @@
-package pycraft;
+package mcpy;
 
 import net.minecraft.registry.Registries;
 
