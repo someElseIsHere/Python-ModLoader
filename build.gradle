@@ -52,14 +52,6 @@ jar {
     }
 }
 
-sourceSets {
-    main {
-        java {
-            exclude 'mcpy/**'
-        }
-    }
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
