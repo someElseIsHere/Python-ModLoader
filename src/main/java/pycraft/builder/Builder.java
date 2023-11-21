@@ -1,4 +1,5 @@
 package pycraft.builder;
 
-public abstract class Builder<T> {
+public interface Builder<T> {
+    T build();
 }
