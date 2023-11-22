@@ -13,9 +13,11 @@ public class BlockRegistry extends Registry<Block> {
 
     @Override
     public void register(Block block, String id) {
-        net.minecraft.registry.Registry.register(Registries.BLOCK, new Identifier(modId, id), block);
+        Identifier identifier = new Identifier(modId, id);
+
+        net.minecraft.registry.Registry.register(Registries.BLOCK, identifier, block);
         if (block.hasItem) {
-            net.minecraft.registry.Registry.register(Registries.ITEM, new Identifier(modId, id), new BlockItem(block, new Item.Settings()));
+            net.minecraft.registry.Registry.register(Registries.ITEM, identifier, new BlockItem(block, new Item.Settings()));
         }
     }
 

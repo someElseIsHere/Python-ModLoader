@@ -14,7 +14,7 @@ import java.util.List;
 @Mixin(ResourcePackManager.class)
 public class PackRepositoryMixin {
     @ModifyVariable(at = @At("HEAD"), method = "<init>", argsOnly = true)
-    private static ResourcePackProvider[] onInit(ResourcePackProvider[] providers) {
+    private static ResourcePackProvider[] init(ResourcePackProvider[] providers) {
         List<ResourcePackProvider> l = new ArrayList<>(Arrays.asList(providers));
         l.add(new PyRepositorySource());
 
