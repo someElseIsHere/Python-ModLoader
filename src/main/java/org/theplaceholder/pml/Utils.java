@@ -8,7 +8,6 @@ import java.util.zip.ZipInputStream;
 
 public class Utils {
     public static String readStringFromZip(Path zipFile, String fileNameInsideZip) throws IOException {
-
         try (ZipInputStream zipInputStream = new ZipInputStream(Files.newInputStream(zipFile))) {
             ZipEntry entry;
             while ((entry = zipInputStream.getNextEntry()) != null) {
@@ -35,11 +34,9 @@ public class Utils {
         try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(zipFilePath.toFile()))) {
             ZipEntry entry;
             while ((entry = zipInputStream.getNextEntry()) != null) {
-                // Check if the entry is a directory and matches the subfolder name
                 if (entry.isDirectory() && entry.getName().equals(subfolderName + "/")) {
-                    // Extract the contents of the subfolder to the parent directory
                     extractFolderToParent(zipInputStream, outputFolderPath.toFile(), subfolderName);
-                    break; // Stop processing after finding and extracting the desired subfolder
+                    break;
                 }
             }
         }
@@ -49,22 +46,17 @@ public class Utils {
         byte[] buffer = new byte[1024];
         ZipEntry entry;
 
-        // Iterate through each entry in the subfolder and extract it to the parent directory
         while ((entry = zipInputStream.getNextEntry()) != null) {
             String entryName = entry.getName();
 
-            // Remove the subfolder hierarchy from the entry name
             String relativePath = entryName.substring(subfolderName.length() + 1);
             File entryFile = new File(parentDestination, relativePath);
 
-            // Create directories if necessary
             if (entry.isDirectory()) {
                 entryFile.mkdirs();
             } else {
-                // Create parent directories for file
                 entryFile.getParentFile().mkdirs();
 
-                // Write the file content
                 try (FileOutputStream fos = new FileOutputStream(entryFile)) {
                     int length;
                     while ((length = zipInputStream.read(buffer)) > 0) {
@@ -73,7 +65,6 @@ public class Utils {
                 }
             }
 
-            // Close the current entry
             zipInputStream.closeEntry();
         }
     }

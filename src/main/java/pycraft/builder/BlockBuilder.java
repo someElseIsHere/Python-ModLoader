@@ -1,15 +1,15 @@
 package pycraft.builder;
 
-
 import net.minecraft.block.AbstractBlock;
 import pycraft.Block;
 
 public class BlockBuilder implements Builder<Block> {
     public boolean hasItem = true;
-    public void noItem() {
+    public BlockBuilder noItem() {
         hasItem = false;
+        return this;
     }
-
+    
     @Override
     public Block build() {
         AbstractBlock.Settings settings = AbstractBlock.Settings.create();

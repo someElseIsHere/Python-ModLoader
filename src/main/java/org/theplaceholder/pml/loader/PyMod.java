@@ -2,6 +2,7 @@ package org.theplaceholder.pml.loader;
 
 import com.google.gson.annotations.Expose;
 import org.theplaceholder.pml.PythonModLoader;
+import org.theplaceholder.pml.python.PythonModInterpreter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -61,7 +62,7 @@ public class PyMod {
     public void runEntryPoints() throws IOException {
         for (File entryPoint : getEntryPoints()) {
             FileInputStream fis = new FileInputStream(entryPoint);
-            PythonModLoader.execfile(fis);
+            PythonModInterpreter.runFile(fis);
             fis.close();
         }
     }
@@ -69,7 +70,7 @@ public class PyMod {
     public void runClientEntryPoints() throws IOException {
         for (File entryPoint : getClientEntryPoints()) {
             FileInputStream fis = new FileInputStream(entryPoint);
-            PythonModLoader.execfile(fis);
+            PythonModInterpreter.runFile(fis);
             fis.close();
         }
     }

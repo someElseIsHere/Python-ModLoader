@@ -5,16 +5,20 @@ import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.text.Text;
 import org.theplaceholder.pml.PythonModLoader;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class PyRepositorySource implements ResourcePackProvider {
+    public static final List<String> IDS = new ArrayList<>();
+
     @Override
     public void register(Consumer<ResourcePackProfile> consumer) {
         for (PyMod mod : PythonModLoader.MODS) {
             ZipResourcePack.ZipBackedFactory factory = new ZipResourcePack.ZipBackedFactory(mod.modArchive, true);
             ResourcePackProfile pack = createPack(factory, mod);
             consumer.accept(pack);
+            IDS.add(pack.getName());
         }
     }
 
