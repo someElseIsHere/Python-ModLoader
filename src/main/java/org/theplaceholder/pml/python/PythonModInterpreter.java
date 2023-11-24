@@ -18,5 +18,4 @@ public class PythonModInterpreter extends PythonInterpreter {
     public static void runFile(FileInputStream fis) {
         INSTANCE.execfile(fis);
     }
-
 }

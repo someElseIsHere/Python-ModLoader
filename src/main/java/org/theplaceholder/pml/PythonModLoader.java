@@ -6,6 +6,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import org.apache.commons.io.FileUtils;
 import org.theplaceholder.pml.loader.PyMod;
+import org.theplaceholder.pml.utils.ZipUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,12 +44,12 @@ public class PythonModLoader implements ModInitializer {
                 if (!modFolder.exists() || modFolder.isDirectory())
                     continue;
 
-                String json = Utils.readStringFromZip(modFolder.toPath(), "py.mod.json");
+                String json = ZipUtils.readStringFromZip(modFolder.toPath(), "py.mod.json");
                 PyMod mod = PyMod.fromJson(json);
                 mod.modArchive = modFolder;
                 MODS.add(mod);
 
-                Utils.unzipSubfolderToParent(modFolder.toPath(), P_MODS_CACHE_FOLDER.toPath(), "python");
+                ZipUtils.unzipSubfolderToParent(modFolder.toPath(), P_MODS_CACHE_FOLDER.toPath(), "python");
             }
         } catch (IOException e) {
             e.printStackTrace();

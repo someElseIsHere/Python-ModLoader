@@ -1,4 +1,4 @@
-package org.theplaceholder.pml;
+package org.theplaceholder.pml.utils;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class Utils {
+public class ZipUtils {
     public static String readStringFromZip(Path zipFile, String fileNameInsideZip) throws IOException {
         try (ZipInputStream zipInputStream = new ZipInputStream(Files.newInputStream(zipFile))) {
             ZipEntry entry;
