@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "client.ResourcePackOrganizerMixin",
-    "client.input.KeyboardInputMixin"
+    "client.ResourcePackOrganizerMixin"
   ],
   "mixins": [
     "PackRepositoryMixin"

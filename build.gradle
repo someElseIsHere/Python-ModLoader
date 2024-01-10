@@ -27,6 +27,14 @@ dependencies {
     include 'org.python:jython-standalone:2.7.3'
 }
 
+sourceSets {
+    api {
+        java {
+            srcDir "src/api/java"
+        }
+    }
+}
+
 processResources {
     inputs.property "version", project.version
 
