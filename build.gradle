@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.4-SNAPSHOT'
     id 'maven-publish'
+    id 'java'
 }
 
 version = project.mod_version
@@ -11,10 +12,6 @@ base {
 }
 
 repositories {}
-
-loom {
-    accessWidenerPath = file("src/main/resources/pml.accesswidener")
-}
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -28,11 +25,30 @@ dependencies {
 }
 
 sourceSets {
-    api {
+    main {
         java {
-            srcDir "src/api/java"
+            srcDirs 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
         }
     }
+    api {
+        java {
+            srcDir 'src/api/java'
+        }
+        resources {
+            srcDir 'src/api/resources'
+        }
+        compileClasspath += main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += main.output + sourceSets.main.runtimeClasspath
+    }
+}
+
+configurations {
+    apiImplementation.extendsFrom implementation
+    apiCompileOnly.extendsFrom compileOnly
+    apiRuntimeOnly.extendsFrom runtimeOnly
 }
 
 processResources {
@@ -58,6 +74,7 @@ jar {
     from("LICENSE") {
         rename { "${it}_${project.base.archivesName.get()}"}
     }
+    from sourceSets.api.output
 }
 
 publishing {
@@ -70,3 +87,4 @@ publishing {
     repositories {
     }
 }
+compileJava.dependsOn compileApiJava
