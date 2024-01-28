@@ -4,7 +4,7 @@ import pycraft.Item;
 
 public class ItemBuilder implements Builder<Item> {
     public int maxCount = 64;
-    public ItemBuilder maxCount(int maxCount) {
+    public ItemBuilder max_count(int maxCount) {
         this.maxCount = maxCount;
         return this;
     }

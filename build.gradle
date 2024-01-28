@@ -24,33 +24,6 @@ dependencies {
     include 'org.python:jython-standalone:2.7.3'
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs 'src/main/java'
-        }
-        resources {
-            srcDir 'src/main/resources'
-        }
-    }
-    api {
-        java {
-            srcDir 'src/api/java'
-        }
-        resources {
-            srcDir 'src/api/resources'
-        }
-        compileClasspath += main.output + sourceSets.main.compileClasspath
-        runtimeClasspath += main.output + sourceSets.main.runtimeClasspath
-    }
-}
-
-configurations {
-    apiImplementation.extendsFrom implementation
-    apiCompileOnly.extendsFrom compileOnly
-    apiRuntimeOnly.extendsFrom runtimeOnly
-}
-
 processResources {
     inputs.property "version", project.version
 
@@ -74,7 +47,6 @@ jar {
     from("LICENSE") {
         rename { "${it}_${project.base.archivesName.get()}"}
     }
-    from sourceSets.api.output
 }
 
 publishing {
@@ -87,4 +59,3 @@ publishing {
     repositories {
     }
 }
-compileJava.dependsOn compileApiJava

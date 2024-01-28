@@ -5,7 +5,7 @@ import pycraft.Block;
 
 public class BlockBuilder implements Builder<Block> {
     public boolean hasItem = true;
-    public BlockBuilder noItem() {
+    public BlockBuilder no_item() {
         hasItem = false;
         return this;
     }
