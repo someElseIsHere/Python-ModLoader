@@ -3,14 +3,14 @@ package pycraft;
 import pycraft.registry.BlockRegistry;
 import pycraft.registry.ItemRegistry;
 
-public class RegistryManager {
-    public final String modId;
+public class Registries {
+    public final String MODID;
 
     public final BlockRegistry BLOCK_REGISTRY;
     public final ItemRegistry ITEM_REGISTRY;
 
-    public RegistryManager(String modId) {
-        this.modId = modId;
+    public Registries(String modId) {
+        MODID = modId;
         BLOCK_REGISTRY = new BlockRegistry(this);
         ITEM_REGISTRY = new ItemRegistry(this);
     }

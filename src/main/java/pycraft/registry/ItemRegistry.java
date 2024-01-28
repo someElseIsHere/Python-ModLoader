@@ -1,14 +1,13 @@
 package pycraft.registry;
 
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import pycraft.Item;
-import pycraft.RegistryManager;
+import pycraft.Registries;
 
 import java.util.Map;
 
 public class ItemRegistry extends Registry<Item> {
-    public ItemRegistry(RegistryManager manager) {
+    public ItemRegistry(Registries manager) {
         super(manager);
     }
 
@@ -20,8 +19,8 @@ public class ItemRegistry extends Registry<Item> {
     @Override
     public void register() {
         for (Map.Entry<String, Item> id : registry.entrySet()) {
-            Identifier identifier = new Identifier(manager.modId, id.getKey());
-            net.minecraft.registry.Registry.register(Registries.ITEM, identifier, id.getValue());
+            Identifier identifier = new Identifier(manager.MODID, id.getKey());
+            net.minecraft.registry.Registry.register(net.minecraft.registry.Registries.ITEM, identifier, id.getValue());
         }
     }
 }

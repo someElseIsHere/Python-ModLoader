@@ -1,14 +1,14 @@
 package pycraft.registry;
 
-import pycraft.RegistryManager;
+import pycraft.Registries;
 
 import java.util.Map;
 
 public abstract class Registry<T> {
-    public RegistryManager manager;
+    public Registries manager;
     public Map<String, T> registry;
 
-    public Registry(RegistryManager manager) {
+    public Registry(Registries manager) {
         this.manager = manager;
     }
 

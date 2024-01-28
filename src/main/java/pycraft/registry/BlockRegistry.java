@@ -1,15 +1,14 @@
 package pycraft.registry;
 
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import pycraft.Block;
-import pycraft.RegistryManager;
+import pycraft.Registries;
 
 import java.util.Map;
 
 public class BlockRegistry extends Registry<Block> {
 
-    public BlockRegistry(RegistryManager manager) {
+    public BlockRegistry(Registries manager) {
         super(manager);
     }
 
@@ -29,8 +28,8 @@ public class BlockRegistry extends Registry<Block> {
     @Override
     public void register() {
         for (Map.Entry<String, Block> id : registry.entrySet()) {
-            Identifier identifier = new Identifier(manager.modId, id.getKey());
-            net.minecraft.registry.Registry.register(Registries.BLOCK, identifier, id.getValue());
+            Identifier identifier = new Identifier(manager.MODID, id.getKey());
+            net.minecraft.registry.Registry.register(net.minecraft.registry.Registries.BLOCK, identifier, id.getValue());
         }
     }
 }
