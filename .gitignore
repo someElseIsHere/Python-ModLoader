@@ -20,5 +20,3 @@ classes/
 .jython_cache
 
 run/*
-!run/python-mods
-run/python-mods/.python-cache
